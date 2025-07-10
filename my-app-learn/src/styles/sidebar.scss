@@ -1,0 +1,27 @@
+.sidebar{
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    background-color: #073B4C;  
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    top: 0;
+    left: 0;
+    // margin: 0;
+
+h3{
+    margin-bottom: 30px;
+}
+nav{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    a{
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+    }  
+}
+}

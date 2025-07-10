@@ -1,0 +1,19 @@
+{
+    "sidebar":[
+        {
+            "link": "/",
+            "label": "Home",
+            "icon":"/images/icon/scenario.svg"
+        },
+        {
+            "link": "/dashboard",
+            "label": "Dashboard",
+            "icon":"/images/icon/dashboard.svg"
+        },
+        {
+            "link": "/settings",
+            "label": "Settings",
+            "icon":"/images/icon/article.svg"
+        } 
+    ]
+}

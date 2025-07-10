@@ -1,0 +1,17 @@
+.main-content{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 230px;
+    padding: 40px;
+    .navbar{
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    main{
+        flex: 1;
+        padding: 20px;
+    }
+}
