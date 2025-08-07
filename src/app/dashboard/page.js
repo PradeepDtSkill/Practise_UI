@@ -1,13 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect} from "react";
 
 export default function Dashboard() {
   const allData = [
     {
       id: 1,
-      name: "John Doe",
-      email: "john@example.com",
+      name: "John Doe",email: "john@example.com",
       role: "Admin",
       status: "Active",
       date: "2025-07-10",
@@ -74,15 +73,15 @@ export default function Dashboard() {
   
     
   ];
-
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredRows, setFilteredRows] = useState(allData);
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 10;
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  const currentRows = allData.slice(indexOfFirstRow, indexOfLastRow);
-
-  const totalPages = Math.ceil(allData.length / rowsPerPage);
+  const currentRows = filteredRows.slice(indexOfFirstRow, indexOfLastRow);
+  const totalPages = Math.ceil(filteredRows.length / rowsPerPage);
 
   const handleNext = () => {
     if (currentPage < totalPages) {
@@ -96,8 +95,42 @@ export default function Dashboard() {
     }
   };
 
-  return (
+  useEffect(()=>{
+    const term = searchTerm.trim().toLowerCase();
+    if(term===""){
+      setFilteredRows(allData);
+    }
+    else{
+      const filtered = allData.filter(
+        (item)=>
+          item.name.toLowerCase().includes(term)||
+          item.email.toLowerCase().includes(term)||
+          item.role.toLowerCase().includes(term)
+      );
+      setFilteredRows(filtered);
+    }
+    setCurrentPage(1);
+  },[searchTerm]);
+
+
+  return (    
     <div className="dashboard-container" >
+      <input
+        type="text"
+        placeholder="Search name or email..."
+        value={searchTerm}
+        onChange={(e) => {
+          setSearchTerm(e.target.value);
+        }
+      }
+        style={{
+          marginBottom: "10px",
+          padding: "5px",
+          width: "250px",
+          borderRadius:"12px",
+          height:"25px"
+        }}
+      />
       <table cellPadding="10">
         <thead>
           <tr>
